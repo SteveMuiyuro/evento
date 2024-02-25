@@ -6,6 +6,7 @@ import React from 'react'
 import Logo from './Logo'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 
 const routes = [
 {
@@ -25,13 +26,16 @@ export default function Header() {
   return (
     <header className='flex items-center h-14 justify-between border-b border-white/10 px-3 sm:px-9'>
         <Logo/>
-        <nav>
-          <ul className='flex gap-x-6 text-sm'>
-            {routes.map(route => (<li className={clsx("hover:text-white transition", {
+        <nav className="h-full">
+          <ul className='flex gap-x-6 text-sm h-full'>
+            {routes.map(route => (<li className={clsx("hover:text-white flex items-center transition relative", {
               "text-white" : activePathName === route.path,
               "text-white/50":activePathName !== route.path
             })}key={route.path}>
             <Link href={route.path}>{route.name}</Link>
+            {activePathName === route.path &&
+            <motion.div layoutId="active-header-link" className="bg-accent h-1 w-full absolute bottom-0"></motion.div>
+            }
             </li>))}
           </ul>
         </nav>
