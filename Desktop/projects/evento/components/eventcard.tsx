@@ -8,7 +8,7 @@ type EventProps = {
 export default function EventCard({event}:EventProps) {
   return (
     <Link className="max-w-[500px] flex-1 basis-80" href={`/event/${event.slug}`}>
-        <section className="flex flex-col h-[380px]  bg-white/[3%] rounded-xl overflow-hidden relative hover:scale-105 active:scale-[1.02]">
+        <section className="flex flex-col h-[380px]  bg-white/[3%] rounded-xl overflow-hidden relative state-effects">
             <Image src={event.imageUrl} alt={event.name} width={500} height={280} className="h-[60%] object-fit"/>
 
             <div className="flex  flex-1 flex-col justify-center items-center">
