@@ -9,7 +9,7 @@ export default function EventCard({event}:EventProps) {
   return (
     <Link className="max-w-[500px] flex-1 basis-80" href={`/event/${event.slug}`}>
         <section className="flex flex-col h-[380px]  bg-white/[3%] rounded-xl overflow-hidden relative state-effects">
-            <Image src={event.imageUrl} alt={event.name} width={500} height={280} className="h-[60%] object-fit"/>
+            <Image src={event.imageUrl} alt={event.name} width={500} height={280} className="h-[60%] object-cover"/>
 
             <div className="flex  flex-1 flex-col justify-center items-center">
               <h2 className="text-2xl font-semibold">{event.name}</h2>
