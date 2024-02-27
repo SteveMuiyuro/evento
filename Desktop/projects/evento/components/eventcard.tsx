@@ -31,6 +31,7 @@ export default function EventCard({event}:EventProps) {
             }</p>
 
           </section>
+
         </section>
 
     </Link>
