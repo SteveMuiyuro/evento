@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import React from 'react'
-import Logo from './Logo'
+import Logo from './logo'
 import { usePathname } from 'next/navigation'
 
 import { motion } from 'framer-motion'

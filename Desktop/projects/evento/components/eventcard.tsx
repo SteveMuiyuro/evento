@@ -1,13 +1,43 @@
+"use client"
 import { EventEvento } from "@/lib/type"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+import { useRef } from "react"
 type EventProps = {
     event:EventEvento
 }
 
+const MotionLink= motion(Link)
+
 export default function EventCard({event}:EventProps) {
+  const ref = useRef(null)
+
+  const {scrollYProgress} = useScroll({
+
+    target: ref,
+    offset:["0 1", "1.5 1"]
+
+  });
+
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1])
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.3, 1])
   return (
-    <Link className="max-w-[500px] flex-1 basis-80" href={`/event/${event.slug}`}>
+    <MotionLink
+    ref={ref}
+    className="max-w-[500px] flex-1 basis-80" href={`/event/${event.slug}`}
+    style={{
+      //@ts-ignore
+      scale:scaleProgress,
+      //@ts-ignore
+      opacity:opacityProgress
+    }}
+    initial = {{
+      opacity: 0,
+      scale:0.8
+
+    }}
+    >
         <section className="flex flex-col h-[380px]  bg-white/[3%] rounded-xl overflow-hidden relative state-effects">
             <Image src={event.imageUrl} alt={event.name} width={500} height={280} className="h-[60%] object-cover"/>
 
@@ -34,6 +64,6 @@ export default function EventCard({event}:EventProps) {
 
         </section>
 
-    </Link>
+    </MotionLink>
   )
 }
