@@ -1,4 +1,4 @@
-import { EventEvento } from "./type"
+import { EventEvento } from "@prisma/client"
 
 export async function FetchEvents(city:string):Promise<EventEvento[]>{
 

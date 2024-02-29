@@ -1,4 +1,3 @@
-import { EventEvento } from "@/lib/type"
 import EventCard from "./eventcard"
 import { FetchEvents } from "@/lib/fetchEvents"
 
@@ -7,7 +6,7 @@ type EventListProps = {
     city:string
 }
 export default async function EventsList({city}:EventListProps) {
-  
+
   const events = await FetchEvents(city)
 
 
