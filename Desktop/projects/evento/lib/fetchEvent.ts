@@ -1,3 +1,5 @@
+
+import { notFound } from "next/navigation";
 import prisma from "./db";
 
 export async function FetchEvent(slug:string){
@@ -6,6 +8,10 @@ export async function FetchEvent(slug:string){
       slug:slug,
     }
   });
+
+  if(!event){
+    return notFound()
+  }
 
   return event;
 
