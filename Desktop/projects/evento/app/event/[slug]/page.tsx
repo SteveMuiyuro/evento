@@ -9,7 +9,7 @@ type Props = {
   };
 };
 
-export function generateStaticParams(){
+export async function generateStaticParams(){
   return [
     {
       slug:"comedy-extravaganza",

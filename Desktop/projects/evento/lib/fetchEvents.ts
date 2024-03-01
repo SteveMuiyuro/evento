@@ -1,4 +1,4 @@
-
+import "server-only"
 import { unstable_cache } from "next/cache";
 import capitalize from "./capitalize";
 import prisma from "./db";
