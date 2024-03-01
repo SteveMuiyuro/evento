@@ -1,8 +1,9 @@
 
 import { notFound } from "next/navigation";
 import prisma from "./db";
+import { unstable_cache } from "next/cache";
 
-export async function FetchEvent(slug:string){
+export const FetchEvent = unstable_cache(async(slug:string) => {
   const event = await prisma.eventEvento.findUnique({
     where: {
       slug:slug,
@@ -15,4 +16,4 @@ export async function FetchEvent(slug:string){
 
   return event;
 
-}
+})

@@ -1,8 +1,9 @@
 
+import { unstable_cache } from "next/cache";
 import capitalize from "./capitalize";
 import prisma from "./db";
 
-export async function FetchEvents(city:string, page = 1){
+export const FetchEvents = unstable_cache(async(city:string, page = 1)=>{
 
 const events = await prisma.eventEvento.findMany({
     where:{
@@ -35,4 +36,4 @@ if(city === "all") {
         events, totalCount
     }
 
-}
+})
